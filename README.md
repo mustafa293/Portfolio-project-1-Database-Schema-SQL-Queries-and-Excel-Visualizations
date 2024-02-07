@@ -145,7 +145,7 @@ LEFT JOIN item on orders.item_id = item.item_id
 LEFT JOIN address on orders.add_id = address.add_id;
 ```
 This resulted in the following table:
-[View Table Data](https://raw.githubusercontent.com/mustafa293/Portfolio-project-1-Database-Schema-SQL-Queries-and-Excel-Visualizations/main/query1.csv)
+[View Table Data](https://github.com/mustafa293/Portfolio-project-1-Database-Schema-SQL-Queries-and-Excel-Visualizations/main/query1.csv)
 
 
 
