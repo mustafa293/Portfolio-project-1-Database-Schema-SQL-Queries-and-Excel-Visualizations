@@ -109,7 +109,7 @@ Final database schema after these final additions:
 Finally I can export this out of quickDBD into MySQL - After accessing my instance of MySQL, i’ve created a database called Pizza DB and uploaded
 the aforementioned file to set up the structure. Now I can upload some dummy data into the database and start writing some SQL queries to explore the data.
 
-Dataset
+[Download Dataset Folder](https://github.com/mustafa293/Portfolio-project-1-Database-Schema-SQL-Queries-and-Excel-Visualizations/blob/main/pizza_proj_new.zip)
 
 # Part II: Writing SQL Queries
 
