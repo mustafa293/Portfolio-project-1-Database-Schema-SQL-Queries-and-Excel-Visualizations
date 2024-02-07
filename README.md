@@ -124,7 +124,7 @@ Some interesting metrics we could visualise later include:
 - Orders by delivery/pickup
 - Plus much more
 
-We will use various SQL queries to get the right data sets to help us with the aforementioned
+We will use various SQL queries to get the right data sets to help us with the aforementioned metrics
 
 ## Query 1:
 ```
@@ -144,8 +144,7 @@ FROM orders
 LEFT JOIN item on orders.item_id = item.item_id
 LEFT JOIN address on orders.add_id = address.add_id;
 ```
-This resulted in the following table:
-[View Table Data](https://github.com/mustafa293/Portfolio-project-1-Database-Schema-SQL-Queries-and-Excel-Visualizations/blob/main/query1.csv)
+This resulted in the following table: [View Table Data](https://github.com/mustafa293/Portfolio-project-1-Database-Schema-SQL-Queries-and-Excel-Visualizations/blob/main/query1.csv)
 
 ## Query 2:
 ```
@@ -185,4 +184,46 @@ group by
 	ingredient.ing_weight,
 	ingredient.ing_price) s1
 ```
-Table result: 
+Table result: [View Table Data](https://github.com/mustafa293/Portfolio-project-1-Database-Schema-SQL-Queries-and-Excel-Visualizations/blob/main/query2.csv)
+
+## Query 3:
+```
+SELECT
+	s2.ing_name,
+	s2.ordered_weight,
+	ingredient.ing_weight*inventory.quantity as total_inv_weight,
+	(ingredient.ing_weight*inventory.quantity)-s2.ordered_weight as remaining_weight
+FROM
+(SELECT 
+	ing_id,
+	ing_name,
+SUM(ordered_weight) as ordered_weight 
+FROM 
+	stock1
+GROUP BY ing_name, ing_id) s2
+
+LEFT JOIN inventory ON inventory.item_id=s2.ing_id
+LEFT JOIN ingredient ON ingredient.ing_id=s2.ing_id
+```
+Table result: [View Table Data](https://github.com/mustafa293/Portfolio-project-1-Database-Schema-SQL-Queries-and-Excel-Visualizations/blob/main/query3.csv)
+
+## Query 4:
+```
+SELECT
+	rota.date,
+	staff.first_name,
+	staff.last_name,
+	staff.hourly_rate,
+	shift.start_time,
+	shift.end_time,
+	((hour(timediff(shift.end_time, shift.start_time))*60) + (minute(timediff(shift.end_time,shift.start_time))))/60 as hours_in_shift,
+	((hour(timediff(shift.end_time, shift.start_time))*60) + (minute(timediff(shift.end_time,shift.start_time))))/60 * staff.hourly_rate as staff_cost
+FROM
+	rota
+LEFT JOIN staff on staff.staff_id=rota.staff_id
+LEFT JOIN shift on shift.shift_id=rota.shift_id
+```
+Table result: [View Table Data](https://github.com/mustafa293/Portfolio-project-1-Database-Schema-SQL-Queries-and-Excel-Visualizations/blob/main/query4.csv)
+
+# Part III: Excel Dashboard
+
