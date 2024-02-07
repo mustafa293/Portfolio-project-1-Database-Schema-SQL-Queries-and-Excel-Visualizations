@@ -229,3 +229,26 @@ Table result: [View Table Data](https://github.com/mustafa293/Portfolio-project-
 
 # Part III: Excel Dashboard
 
+In this final section, I will be using query 1 from the previous section to build out a simple 'orders dashborad' for Ben's pizzeria within Excel.
+
+First I saved the table result of query1 as a CSV and uploaded it into Excel.
+
+I then did a quick checkup of the data, making sure that each data type was represented correctly and then formatted the raw data as a table.
+
+Before moving onto pivot tables & charts, I included one more column named 'sales value' which is the multiplication of item price & quantity - as I forgot to do this within SQL.
+
+![image](https://github.com/mustafa293/Portfolio-project-1-Database-Schema-SQL-Queries-and-Excel-Visualizations/assets/56410464/01076162-05f9-437f-9071-6220170eb690)
+
+Using the table - I created pivot tables in order to make some basic visualisations, mainly using my newly created 'sales value' field. I then made the following charts from the pivot tables:
+- A donut chart showing the % of sales between the different item categories
+- A bar chart showing the total sales value per individual food item
+- A line chart showing the amount or orders and the sum of sales per hour
+
+Then I done some formatting & included some other KPIs such as: Total orders, Total Sales, Total Items and Avergae Order Value. Lastly, I included a slicer for the line chart so that stakeholders could visualise how indidual food items were doing in terms of orders & sales.
+
+Here is the final dashboard to cap off this project:
+
+![image](https://github.com/mustafa293/Portfolio-project-1-Database-Schema-SQL-Queries-and-Excel-Visualizations/assets/56410464/dfdd3d55-af38-463f-aaf3-b68ae7a160c7)
+
+
+
