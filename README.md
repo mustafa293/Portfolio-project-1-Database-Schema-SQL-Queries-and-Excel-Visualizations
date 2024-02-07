@@ -126,20 +126,20 @@ Some interesting metrics we could visualise later include:
 
 We will use various SQL queries to get the right data sets to help us with the aforementioned
 
-Here is my first query:
+## Query 1:
 ```
 SELECT
-orders.order_id,
-item.item_price,
-orders.quantity,
-item.item_cat,
-item.item_name,
-orders.created_at,
-address.delivery_address1,
-address.delivery_address2,
-address.delivery_city,
-address.delivery_zipcode,
-orders.delivery
+  orders.order_id,
+  item.item_price,
+  orders.quantity,
+  item.item_cat,
+  item.item_name,
+  orders.created_at,
+  address.delivery_address1,
+  address.delivery_address2,
+  address.delivery_city,
+  address.delivery_zipcode,
+  orders.delivery
 FROM orders
 LEFT JOIN item on orders.item_id = item.item_id
 LEFT JOIN address on orders.add_id = address.add_id;
@@ -147,5 +147,42 @@ LEFT JOIN address on orders.add_id = address.add_id;
 This resulted in the following table:
 [View Table Data](https://github.com/mustafa293/Portfolio-project-1-Database-Schema-SQL-Queries-and-Excel-Visualizations/blob/main/query1.csv)
 
-
-
+## Query 2:
+```
+SELECT 
+	s1.item_name,
+	s1.ing_id,
+	s1.ing_name,
+	s1.ing_weight,
+	s1.ing_price,
+	s1.order_quantity,
+	s1.recipe_quantity,
+	s1.order_quantity*s1.recipe_quantity as ordered_weight,
+	s1.ing_price*s1.ing_weight as unit_cost,
+	(s1.order_quantity*s1.recipe_quantity)*(s1.ing_price/s1.ing_weight) as ingredient_cost
+FROM (SELECT
+	orders.item_id,
+	item.sku,
+	item.item_name,
+	recipe.ing_id,
+	ingredient.ing_name,
+	recipe.quantity as recipe_quantity,
+sum(orders.quantity) as order_quantity,
+	ingredient.ing_weight,
+	ingredient.ing_price
+from 
+	orders
+	left join item on orders.item_id=item.item_id
+	left join recipe on item.sku=recipe.recipe_id
+	left join ingredient on ingredient.ing_id=recipe.ing_id
+group by 
+	orders.item_id,
+	item.sku,
+	item_name,
+	recipe.ing_id,
+	recipe.quantity,
+	ingredient.ing_name,
+	ingredient.ing_weight,
+	ingredient.ing_price) s1
+```
+Table result: 
