@@ -110,3 +110,38 @@ Finally I can export this out of quickDBD into MySQL - After accessing my instan
 the aforementioned file to set up the structure. Now I can upload some dummy data into the database and start writing some SQL queries to explore the data.
 
 # Part II: Writing SQL Queries
+
+In this section, I will run SQL queries using techniques like JOINS, sub-queries, aliases aswell as general functions in order get some interesting results from the dataset.
+
+Some interesting metrics we could visualise later include:
+- Total orders
+- Total sales
+- Total items
+- Average order value
+- Sales by category
+- Orders & sales by hour
+- Orders by address
+- Orders by delivery/pickup
+- Plus much more
+
+We will use various SQL queries to get the right data sets to help us with the aforementioned
+
+Here is my first query:
+```
+SELECT
+orders.order_id,
+item.item_price,
+orders.quantity,
+item.item_cat,
+item.item_name,
+orders.created_at,
+address.delivery_address1,
+address.delivery_address2,
+address.delivery_city,
+address.delivery_zipcode,
+orders.delivery
+FROM orders
+LEFT JOIN item on orders.item_id = item.item_id
+LEFT JOIN address on orders.add_id = address.add_id;
+```
+This resulted in the following table:
