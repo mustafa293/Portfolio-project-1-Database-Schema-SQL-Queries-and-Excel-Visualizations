@@ -109,6 +109,8 @@ Final database schema after these final additions:
 Finally I can export this out of quickDBD into MySQL - After accessing my instance of MySQL, i’ve created a database called Pizza DB and uploaded
 the aforementioned file to set up the structure. Now I can upload some dummy data into the database and start writing some SQL queries to explore the data.
 
+Dataset
+
 # Part II: Writing SQL Queries
 
 In this section, I will run SQL queries using techniques like JOINS, sub-queries, aliases aswell as general functions in order get some interesting results from the dataset.
